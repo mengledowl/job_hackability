@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: sampleurl.com
+  user_id: 1
+  title: MyText
+  description: MyText
+  raw_scraping_data: MyText
+  apply_link: MyText
+  resume_link: MyText
+  applied: false
+  cover_letter_link: MyText
+
+two:
+  url: MyText
+  user_id: 1
+  title: MyText
+  description: MyText
+  raw_scraping_data: MyText
+  apply_link: MyText
+  resume_link: MyText
+  applied: false
+  cover_letter_link: MyText
