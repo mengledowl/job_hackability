@@ -1,8 +1,10 @@
 require 'test_helper'
+require 'yaml'
 
 class JobListingTest < ActiveSupport::TestCase
   def setup
     @job_listing = JobListing.new
+    @scraper_attributes = YAML.load(ERB.new(File.read('test/files/scraper.yml')).result)['one']
   end
 
   test "should have unique urls per user" do
@@ -17,5 +19,24 @@ class JobListingTest < ActiveSupport::TestCase
     @job_listing.user_id = 2
 
     assert_nothing_raised { @job_listing.save! }
+  end
+
+  test "scrape_attributes should set attributes from scraper" do
+    @job_listing.url = @scraper_attributes['url']
+    scrape = Scraper.new(@scraper_attributes['url'])
+
+    @scraper_attributes.each { |k,v| scrape.send("#{k}=", v) }
+
+    @job_listing.stub(:scraper, scrape) { @job_listing.scrape_attributes }
+
+    assert_equal scrape.url, @job_listing.url
+    assert_equal scrape.html, @job_listing.raw_scraping_data
+    assert_equal scrape.company, @job_listing.company
+    assert_equal scrape.description, @job_listing.description
+    assert_equal scrape.apply_details, @job_listing.apply_details
+    assert_equal scrape.apply_link, @job_listing.apply_link
+    assert_equal scrape.position, @job_listing.position
+    assert_equal scrape.posted_date, @job_listing.posted_date
+    assert_equal scrape.company_website, @job_listing.company_website
   end
 end

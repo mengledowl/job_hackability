@@ -1,0 +1,10 @@
+one:
+  url: https://weworkremotely.com/test
+  html: <p>test</p>
+  company: Some Company
+  description: Description of some job <strong>with style</strong>
+  apply_details: Please <a href="apply.com">apply</a>
+  apply_link: apply.com
+  position: Rails Developer
+  posted_date: <%= Date.current %>
+  company_website: somecompany.com
