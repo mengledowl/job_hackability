@@ -11,6 +11,7 @@ class JobListingTest < ActiveSupport::TestCase
     @job_listing.url = 'sampleurl.com' # duplicate
     @job_listing.user_id = 1
 
+    assert_not @job_listing.valid?
     assert_raises(Exception) { @job_listing.save! }
   end
 
@@ -18,7 +19,7 @@ class JobListingTest < ActiveSupport::TestCase
     @job_listing.url = 'sampleurl.com'
     @job_listing.user_id = 2
 
-    assert_nothing_raised { @job_listing.save! }
+    assert @job_listing.valid?
   end
 
   test "scrape_attributes should set attributes from scraper" do

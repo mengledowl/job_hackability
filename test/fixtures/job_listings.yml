@@ -8,7 +8,6 @@ one:
   raw_scraping_data: MyText
   apply_link: MyText
   resume_link: MyText
-  applied: false
   cover_letter_link: MyText
 
 two:
@@ -19,5 +18,4 @@ two:
   raw_scraping_data: MyText
   apply_link: MyText
   resume_link: MyText
-  applied: false
   cover_letter_link: MyText

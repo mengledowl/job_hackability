@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729044208) do
+ActiveRecord::Schema.define(version: 20160729064012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20160729044208) do
     t.text     "raw_scraping_data"
     t.text     "apply_link"
     t.text     "resume_link"
-    t.boolean  "applied"
     t.text     "cover_letter_link"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
@@ -44,6 +43,7 @@ ActiveRecord::Schema.define(version: 20160729044208) do
     t.string   "company_website"
     t.string   "company"
     t.text     "apply_details"
+    t.datetime "applied_at"
   end
 
   create_table "users", force: :cascade do |t|
