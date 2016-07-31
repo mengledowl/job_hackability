@@ -4,7 +4,7 @@ require 'yaml'
 class JobListingTest < ActiveSupport::TestCase
   def setup
     @job_listing = JobListing.new
-    @scraper_attributes = YAML.load(ERB.new(File.read('test/files/scraper.yml')).result)['one']
+    @scraper_attributes = YAML.load(ERB.new(File.read('test/files/scraper.yml')).result)['we_work_remotely']
   end
 
   test "should have unique urls per user" do
@@ -12,7 +12,7 @@ class JobListingTest < ActiveSupport::TestCase
     @job_listing.user_id = 1
 
     assert_not @job_listing.valid?
-    assert_raises(Exception) { @job_listing.save! }
+    assert_raises(ActiveRecord::RecordInvalid) { @job_listing.save! }
   end
 
   test "should allow duplicate urls for different users" do
@@ -28,7 +28,7 @@ class JobListingTest < ActiveSupport::TestCase
 
     @scraper_attributes.each { |k,v| scrape.send("#{k}=", v) }
 
-    @job_listing.stub(:scraper, scrape) { @job_listing.scrape_attributes }
+    @job_listing.stub(:scraped_values, scrape) { @job_listing.scrape_attributes }
 
     assert_equal scrape.url, @job_listing.url
     assert_equal scrape.html, @job_listing.raw_scraping_data

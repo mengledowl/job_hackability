@@ -8,20 +8,56 @@ class Scraper
     @url = url
   end
 
-  # we work remotely
-  def scrape
+  def html
+    @html ||= scrape_html
+  end
+
+  def self.adapter(url)
+    host = URI(url).hostname
+
+    scraper_adapter = nil
+
+    adapter_list.each do |item|
+      if host.match(item.gsub('_', ''))
+        scraper_adapter = item
+        break
+      end
+    end
+
+    if scraper_adapter
+      scraper_adapter = "Scraper::#{scraper_adapter.camelize}".constantize
+    else
+      raise "Missing scraper for #{host}"
+    end
+
+    scraper_adapter
+  end
+
+  def self.adapter_list
+    list = Dir["app/models/scraper/*.rb"]
+    list.each { |item| item.gsub!(/app\/models\/scraper\/|\.rb/, '') }
+    list
+  end
+
+  def attributes
+    {
+        url: url,
+        html: html,
+        company: company,
+        description: description,
+        apply_details: apply_details,
+        apply_link: apply_link,
+        position: position,
+        posted_date: posted_date,
+        company_website: company_website
+    }
+  end
+
+  private
+
+  def scrape_html
     page = HTTParty.get(url)
 
     self.html = Nokogiri::HTML(page)
-
-    self.position = html.css('.listing-header-container').css('h1').inner_html
-    self.posted_date = Date.parse(html.css('.listing-header-container').css('h3').inner_html)
-    self.company = html.css('.company').inner_html
-    self.company_website = html.css('.listing-header-container').css('a').first['href']
-    self.description = html.css('.listing-container').inner_html.gsub(/\s{2,}|\n/, '')
-    self.apply_link = html.css('.apply').css('a').inner_html
-    self.apply_details = html.css('.apply p').inner_html
-
-    self
   end
 end
