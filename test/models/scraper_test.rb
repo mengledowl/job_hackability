@@ -9,4 +9,8 @@ class ScraperTest < ActiveSupport::TestCase
   test "should return the adapter correctly" do
     assert_equal Scraper::WeWorkRemotely, Scraper.adapter(@url)
   end
+
+  test "should raise NoAdapterFound if no adapter found" do
+    assert_raises(NoAdapterFoundError) { Scraper.adapter('http://www.noadapterfound.com/test') }
+  end
 end

@@ -40,4 +40,19 @@ class JobListingTest < ActiveSupport::TestCase
     assert_equal scrape.posted_date, @job_listing.posted_date
     assert_equal scrape.company_website, @job_listing.company_website
   end
+
+  test "scrape_attributes should not set attributes if no adapter found" do
+    @job_listing.url = 'http://www.noadapterfound.com/test'
+    @job_listing.scrape_attributes
+
+    assert_equal 'http://www.noadapterfound.com/test', @job_listing.url
+    assert_equal nil, @job_listing.raw_scraping_data
+    assert_equal nil, @job_listing.company
+    assert_equal nil, @job_listing.description
+    assert_equal nil, @job_listing.apply_details
+    assert_equal nil, @job_listing.apply_link
+    assert_equal nil, @job_listing.position
+    assert_equal nil, @job_listing.posted_date
+    assert_equal nil, @job_listing.company_website
+  end
 end

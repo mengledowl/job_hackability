@@ -25,5 +25,8 @@ class JobListing < ActiveRecord::Base
     self.position = scraped_values.position
     self.posted_date = scraped_values.posted_date
     self.company_website = scraped_values.company_website
+
+  rescue NoAdapterFoundError => e
+    nil
   end
 end

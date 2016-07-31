@@ -27,7 +27,7 @@ class Scraper
     if scraper_adapter
       scraper_adapter = "Scraper::#{scraper_adapter.camelize}".constantize
     else
-      raise "Missing scraper for #{host}"
+      raise NoAdapterFoundError, "Missing scraper for #{host}"
     end
 
     scraper_adapter
