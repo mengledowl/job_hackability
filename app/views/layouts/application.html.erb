@@ -8,7 +8,14 @@
 </head>
 <body>
 <%= render 'layouts/header' %>
+<% if current_page? root_url %>
   <%= yield %>
+<% else %>
+    <div class="content">
+      <%= yield %>
+    </div>
+<% end %>
+
 <%= render 'layouts/footer' %>
 </body>
 </html>
