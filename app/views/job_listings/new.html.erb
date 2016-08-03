@@ -7,44 +7,71 @@
 <%= render partial: 'layouts/errors', locals: { model: @job_listing } %>
 
 <%= form_for @job_listing do |f| %>
-    <%= f.label :url %>
-    <%= f.text_field :url %>
+    <div class="field">
+      <%= f.label :url %>
+      <%= f.text_field :url %>
+    </div>
 
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
 
-    <%= f.label :description %>
-    <%= f.text_field :description %>
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
 
-    <%= f.label :apply_link %>
-    <%= f.text_field :apply_link %>
+    <div class="field">
+      <%= f.label :apply_link %>
+      <%= f.text_field :apply_link %>
+    </div>
 
-    <%= f.label :resume_link %>
-    <%= f.text_field :resume_link %>
+    <div class="field">
+      <%= f.label :resume_link %>
+      <%= f.text_field :resume_link %>
+    </div>
 
-    <%= f.label :applied_at %>
-    <%= f.date_select :applied_at %>
+    <div class="field">
+      <%= f.label :applied_at %>
+      <%= f.date_select :applied_at %>
+    </div>
 
-    <%= f.label :cover_letter_link %>
-    <%= f.text_field :cover_letter_link %>
+    <div class="field">
+      <%= f.label :cover_letter_link %>
+      <%= f.text_field :cover_letter_link %>
+    </div>
 
-    <%= f.label :favorite %>
-    <%= f.check_box :favorite %>
+    <div class="field">
+      <%= f.label :favorite %>
+      <%= f.check_box :favorite %>
+    </div>
 
-    <%= f.label :position %>
-    <%= f.text_field :position %>
+    <div class="field">
+      <%= f.label :position %>
+      <%= f.text_field :position %>
+    </div>
 
-    <%= f.label :posted_date %>
-    <%= f.date_select :posted_date %>
+    <div class="field">
+      <%= f.label :posted_date %>
+      <%= f.date_select :posted_date %>
+    </div>
 
-    <%= f.label :company_website %>
-    <%= f.text_field :company_website %>
+    <div class="field">
+      <%= f.label :company_website %>
+      <%= f.text_field :company_website %>
+    </div>
 
-    <%= f.label :company_name %>
-    <%= f.text_field :company %>
+    <div class="field">
+      <%= f.label :company_name %>
+      <%= f.text_field :company %>
+    </div>
 
-    <%= f.label :apply_details %>
-    <%= f.text_field :apply_details %>
+    <div class="field">
+      <%= f.label :apply_details %>
+      <%= f.text_field :apply_details %>
+    </div>
+
 
     <%= f.submit %>
 <% end %>

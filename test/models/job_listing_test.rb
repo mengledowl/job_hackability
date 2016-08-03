@@ -55,4 +55,27 @@ class JobListingTest < ActiveSupport::TestCase
     assert_equal nil, @job_listing.posted_date
     assert_equal nil, @job_listing.company_website
   end
+
+  test "display_name should return title if available" do
+    @job_listing.title = 'title test'
+
+    assert_equal 'title test', @job_listing.display_name
+  end
+
+  test "display_name should return {position} at {company} if title nil and position and company present" do
+    @job_listing.title = ''
+    @job_listing.position = 'position test'
+    @job_listing.company = 'company test'
+
+    assert_equal 'position test at company test', @job_listing.display_name
+  end
+
+  test "display_name should return url if title and position_at_company empty" do
+    @job_listing.title = ''
+    @job_listing.position = ''
+    @job_listing.company = ''
+    @job_listing.url = 'http://www.test.com/test'
+
+    assert_equal 'http://www.test.com/test', @job_listing.display_name
+  end
 end

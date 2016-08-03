@@ -29,4 +29,14 @@ class JobListing < ActiveRecord::Base
   rescue NoAdapterFoundError => e
     nil
   end
+
+  def display_name
+    return title if title.present?
+    position_at_company || url
+  end
+
+  def position_at_company
+    return "#{position} at #{company}" if position.present? && company.present?
+    nil
+  end
 end

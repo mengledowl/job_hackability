@@ -1,0 +1,13 @@
+<div class="listing">
+  <div class="listing-header">
+    <span class="listing-title"><%= link_to job_listing.display_name, job_listing_path(job_listing), title: job_listing.display_name %></span>
+    <span class="listing-favorite"><% if job_listing.favorite %>&#9733;<% else %>&#9734;<% end %></span>
+    <div class="company"><%= job_listing.company %></div>
+  </div>
+
+
+
+  <div class="listing-description">
+    <%= truncate(strip_tags(job_listing.description), length: 275) %>
+  </div>
+</div>

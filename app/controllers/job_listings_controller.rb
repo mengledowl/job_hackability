@@ -1,7 +1,9 @@
 class JobListingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_job_listing, only: [:show, :edit, :update, :delete]
 
   def index
+    @job_listings = current_user.job_listings
   end
 
   def new
@@ -11,7 +13,7 @@ class JobListingsController < ApplicationController
   def create
     @job_listing = JobListing.new(listing_params)
 
-    if @job_listing.save
+    if current_user.job_listings << @job_listing
       redirect_to @job_listing
     else
       flash.now[:error] = 'Could not create job listing'
@@ -23,12 +25,9 @@ class JobListingsController < ApplicationController
   end
 
   def edit
-    @job_listing = JobListing.find(params[:id])
   end
 
   def update
-    @job_listing = JobListing.find(params[:id])
-
     if @job_listing.update(edit_listing_params)
       redirect_to @job_listing
     else
@@ -50,5 +49,9 @@ class JobListingsController < ApplicationController
   def edit_listing_params
     params.require(:job_listing).permit(:title, :description, :apply_link, :resume_link, :applied_at,
                                         :cover_letter_link, :favorite, :position, :posted_date, :company_website, :company, :apply_details)
+  end
+
+  def set_job_listing
+    @job_listing ||= JobListing.find_by(user: current_user, id: params[:id])
   end
 end
