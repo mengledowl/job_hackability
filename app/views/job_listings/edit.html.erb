@@ -34,7 +34,7 @@
 
     <div class="field">
       <%= f.label :applied_at %>
-      <%= f.date_select :applied_at %>
+      <%= f.date_select :applied_at, { :include_blank => true, :default => nil } %>
     </div>
 
     <div class="field">
@@ -54,7 +54,7 @@
 
     <div class="field">
       <%= f.label :posted_date %>
-      <%= f.date_select :posted_date %>
+      <%= f.date_select :posted_date, { :include_blank => true, :default => nil } %>
     </div>
 
     <div class="field">
