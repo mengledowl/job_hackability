@@ -1,5 +1,5 @@
 <div class="heading-center">
-  <h1>New Job Listing</h1>
+  <h1>Edit Job Listing</h1>
 </div>
 
 <%= render 'layouts/flash_messages' %>
@@ -8,7 +8,7 @@
 
 <%= form_for @job_listing do |f| %>
     <%= f.label :url %>
-    <%= f.text_field :url %>
+    <%= f.text_field :url, disabled: true %>
 
     <%= f.label :title %>
     <%= f.text_field :title %>

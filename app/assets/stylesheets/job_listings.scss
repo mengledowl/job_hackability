@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+input, label {
+  display: block;
+}
+
 .listing-container {
   width: 100%;
   margin: 20px auto;
