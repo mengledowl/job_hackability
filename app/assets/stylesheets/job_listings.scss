@@ -1,3 +1,55 @@
 // Place all the styles related to the job_listings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.listing-container {
+  width: 100%;
+  margin: 20px auto;
+  position: relative;
+  text-align:center;
+}
+
+.listing {
+  box-shadow: 5px 5px 5px grey;
+  background: #fff;
+  height: 300px;
+  width: 300px;
+  display:inline-block;
+  margin: 10px;
+  text-align: left;
+}
+
+.listing-header {
+  text-align: center;
+  line-height: 2em;
+  margin: 10px 10px 10px 60px;
+}
+
+.listing-title {
+  margin: 10px;
+  font-size: 16pt;
+  width: 250px;
+}
+
+.listing-favorite {
+  right: 0;
+  float: right;
+  width: 50px;
+  color: #01bf86;
+}
+
+.listing-description {
+  height: 190px;
+  margin: 10px 20px;
+}
+
+.company {
+  color: #999999;
+  text-align: center;
+  margin: 10px;
+}
+
+.listing a {
+  color: #127FBF;
+}

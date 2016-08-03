@@ -1,2 +1,52 @@
-<h1>JobListings#index</h1>
-<p>Find me in app/views/job_listings/index.html.erb</p>
+<%= provide(:title, 'Job Listings') %>
+
+<div class="heading-center">
+  <h1>Job Listings</h1>
+
+  <span class="btn"><%= link_to 'Create New', new_job_listing_path %></span>
+</div>
+
+
+<section class="light-bg">
+  <div class="listing-container">
+    <div class="listing">
+      <div class="listing-header">
+        <span class="listing-title"><%= link_to 'Job #1', job_listings_path %></span>
+        <span class="listing-favorite">&#9733;</span>
+      </div>
+
+      <div class="company">Company Name</div>
+
+      <div class="listing-description">
+          <%= truncate("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan faucibus quam, sed volutpat nulla elementum sed. Nunc rhoncus, odio et placerat blandit, libero tortor cursus sem, nec fermentum purus tortor et lectus. Sed in sagittis nibh, quis auctor purus. Nunc dictum lectus id ligula vehicula egestas. Donec placerat, lacus non mollis interdum, sem nisi aliquet felis, ut fermentum velit urna in sapien. Nunc arcu urna, scelerisque in tortor quis, pulvinar lacinia elit. Vestibulum facilisis sem et ligula consectetur consectetur. Praesent ac nibh eros. Aliquam sed turpis vel neque convallis finibus sit amet placerat tortor. In eget varius risus. Quisque aliquam at nibh at dictum. Nullam vehicula libero mi. Proin a magna rutrum, malesuada sem quis, vestibulum justo. Sed cursus, odio et imperdiet interdum, lacus risus egestas ligula, eget posuere felis nunc eget ex. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.", length: 250) %>
+      </div>
+    </div>
+
+    <div class="listing">
+      <div class="listing-header">
+        <span class="listing-title"><%= link_to 'Job #1', job_listings_path %></span>
+        <span class="listing-favorite">&#9734;</span>
+      </div>
+
+      <div class="company">Company Name</div>
+
+      <div class="listing-description">
+        <%= truncate("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan faucibus quam, sed volutpat nulla elementum sed. Nunc rhoncus, odio et placerat blandit, libero tortor cursus sem, nec fermentum purus tortor et lectus. Sed in sagittis nibh, quis auctor purus. Nunc dictum lectus id ligula vehicula egestas. Donec placerat, lacus non mollis interdum, sem nisi aliquet felis, ut fermentum velit urna in sapien. Nunc arcu urna, scelerisque in tortor quis, pulvinar lacinia elit. Vestibulum facilisis sem et ligula consectetur consectetur. Praesent ac nibh eros. Aliquam sed turpis vel neque convallis finibus sit amet placerat tortor. In eget varius risus. Quisque aliquam at nibh at dictum. Nullam vehicula libero mi. Proin a magna rutrum, malesuada sem quis, vestibulum justo. Sed cursus, odio et imperdiet interdum, lacus risus egestas ligula, eget posuere felis nunc eget ex. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.", length: 250) %>
+      </div>
+    </div>
+
+    <div class="listing">
+      <div class="listing-header">
+        <span class="listing-title"><%= link_to 'Job #1', job_listings_path %></span>
+        <span class="listing-favorite">&#9734;</span>
+      </div>
+
+      <div class="company">Company Name</div>
+
+      <div class="listing-description">
+        <%= truncate("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur accumsan faucibus quam, sed volutpat nulla elementum sed. Nunc rhoncus, odio et placerat blandit, libero tortor cursus sem, nec fermentum purus tortor et lectus. Sed in sagittis nibh, quis auctor purus. Nunc dictum lectus id ligula vehicula egestas. Donec placerat, lacus non mollis interdum, sem nisi aliquet felis, ut fermentum velit urna in sapien. Nunc arcu urna, scelerisque in tortor quis, pulvinar lacinia elit. Vestibulum facilisis sem et ligula consectetur consectetur. Praesent ac nibh eros. Aliquam sed turpis vel neque convallis finibus sit amet placerat tortor. In eget varius risus. Quisque aliquam at nibh at dictum. Nullam vehicula libero mi. Proin a magna rutrum, malesuada sem quis, vestibulum justo. Sed cursus, odio et imperdiet interdum, lacus risus egestas ligula, eget posuere felis nunc eget ex. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.", length: 250) %>
+      </div>
+    </div>
+  </div>
+
+</section>

@@ -74,6 +74,10 @@ a {
     text-decoration: none;
 }
 
+h1 {
+    font-size: 3em;
+}
+
 .header-cont {
     width:100%;
     position:fixed;
@@ -165,6 +169,7 @@ span.sign-up a:hover {
 .content {
     margin: 70px auto;
     padding: 30px 60px;
+    max-width: 1000px;
 }
 
 .full-screen {
@@ -192,4 +197,28 @@ span.sign-up a:hover {
 
 .full-screen h3 {
     color: rgba(255, 255, 255, 0.75);
+}
+
+.heading-center {
+    text-align: center;
+    margin: 10px 10px 30px 10px;
+}
+
+.btn a {
+    padding: 10px 20px;
+    background-color: #127FBF;
+    color: #fff;
+    display: inline-block;
+    border: 2px solid #127FBF;
+    border-radius: 30px;
+}
+
+section.light-bg {
+    border: 1px solid #DADDE0;
+    border-right: none;
+    border-left: none;
+    background-color: #f3f6fa;
+    position: absolute;
+    left: 0;
+    width: 100%;
 }
