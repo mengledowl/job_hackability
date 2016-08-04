@@ -3,7 +3,7 @@ class JobListingsController < ApplicationController
   before_action :set_job_listing, only: [:show, :edit, :update, :delete]
 
   def index
-    @job_listings = current_user.job_listings
+    @job_listings = current_user.job_listings.order(created_at: :desc)
   end
 
   def new

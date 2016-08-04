@@ -235,6 +235,11 @@ span.sign-up a:hover {
     border-radius: 30px;
 }
 
+.btn a:hover {
+    background-color: #0F689C;
+    border-color: #0F689C;
+}
+
 .btn-center {
     display: table;
     margin: 0 auto;
