@@ -38,6 +38,15 @@ class StackOverflowTest < ActiveSupport::TestCase
     assert_equal nil, @scraped_hash.apply_link
   end
 
+  test "should set the apply_link when link is present" do
+    @html = File.read('test/files/stackoverflow_example_2.html')
+    HTTParty.stub :get, @html do
+      @scraped_hash = Scraper::StackOverflow.new(@url).scrape
+    end
+
+    assert_equal 'http://boards.greenhouse.io/youearnedit/jobs/238648', @scraped_hash.apply_link
+  end
+
   test "should not set apply_details" do
     assert_equal nil, @scraped_hash.apply_details
   end
