@@ -35,7 +35,7 @@ class WeWorkRemotelyTest < ActiveSupport::TestCase
   end
 
   test "should correctly set apply_link" do
-    assert_equal 'jobs@gotsoccer.com', @scraped_hash.apply_link
+    assert_equal 'mailto:jobs@gotsoccer.com', @scraped_hash.apply_link
   end
 
   test "should correctly set apply details" do

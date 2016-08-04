@@ -39,6 +39,16 @@ class Scraper
     list
   end
 
+  def format_apply_link(apply_link)
+    return apply_link unless apply_link.present?
+
+    if apply_link.match(/\w+@\w+\.\w+/)
+      apply_link.starts_with?('mailto:') ? apply_link : "mailto:#{apply_link}"
+    else
+      apply_link
+    end
+  end
+
   def attributes
     {
         url: url,
@@ -46,7 +56,7 @@ class Scraper
         company: company,
         description: description,
         apply_details: apply_details,
-        apply_link: apply_link,
+        apply_link: format_apply_link(apply_link),
         position: position,
         posted_date: posted_date,
         company_website: company_website
