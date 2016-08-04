@@ -6,10 +6,11 @@
   <span class="btn"><%= link_to 'Create New', new_job_listing_path %></span>
 </div>
 
+<% if @job_listings.present? %>
+  <section class="light-bg">
+    <div class="listing-container">
+      <%= render @job_listings %>
+    </div>
 
-<section class="light-bg">
-  <div class="listing-container">
-    <%= render @job_listings %>
-  </div>
-
-</section>
+  </section>
+<% end %>
