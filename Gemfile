@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "2.2.3"
+
 gem 'rails', '4.2.6'
 
 gem 'postgresql'
@@ -15,6 +17,8 @@ gem 'nokogiri'
 gem 'httparty'
 
 gem 'devise'
+
+gem 'rails_12factor'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
