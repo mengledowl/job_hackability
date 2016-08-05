@@ -184,10 +184,19 @@ span.sign-up a:hover {
     color: #fff;
 }
 
+.header-spacer {
+    height: 100px;
+}
+
 .content {
-    margin: 70px auto;
-    padding: 30px 60px;
+    /*margin: 0 auto;*/
+    /*padding: 30px 60px;*/
+    margin: 0 auto;
     max-width: 1000px;
+}
+
+.content-container {
+    margin: 20px 70px;
 }
 
 .full-screen {
@@ -250,8 +259,6 @@ section.light-bg {
     border-right: none;
     border-left: none;
     background-color: #f3f6fa;
-    position: absolute;
-    left: 0;
     width: 100%;
 }
 
@@ -259,6 +266,7 @@ section.light-bg {
     color: #999;
     display: block;
     font-weight: bold;
+    font-size: 10pt;
 }
 
 .sub-heading a {
@@ -267,4 +275,8 @@ section.light-bg {
 
 .brief-description {
     margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
 }

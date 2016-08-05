@@ -14,3 +14,29 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).on('turbolinks:load', function() {
+    $(".listing-nav li").click(function() {
+        // only activate the clicked tab
+        $(this).addClass('active');
+        $(".listing-nav li").not(this).removeClass('active');
+
+        // hide everything
+        $(".position-description, .comment-container").addClass('hidden');
+
+        // show the correct one
+        switch($(this).attr('id')) {
+            case 'application-details-tab':
+                $(".position-description").removeClass('hidden');
+                break;
+            case 'comments-tab':
+                $(".comment-container").removeClass('hidden');
+                break;
+            case 'interviews-tab':
+                $(".interviews-container").removeClass('hidden');
+                break;
+        }
+    })
+
+});

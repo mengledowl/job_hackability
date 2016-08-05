@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   resources :job_listings
+  resources :comments, except: [:new]
 
 end

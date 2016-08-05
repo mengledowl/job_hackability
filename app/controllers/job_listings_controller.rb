@@ -22,6 +22,7 @@ class JobListingsController < ApplicationController
   end
 
   def show
+    # @comment = Comment.new(job_listing: @job_listing)
   end
 
   def edit

@@ -1,32 +1,71 @@
-<div class="heading-left">
-  <span class="edit-link">(<%= link_to 'edit', edit_job_listing_path(@job_listing) %>)</span>
-  <h1><%= @job_listing.display_name %></h1><span class="listing-favorite"></span>
-  <span class="sub-heading"><%= link_to @job_listing.url, @job_listing.url, target: '_blank' %></span>
-  <%= link_to 'Resume', @job_listing.resume_link.to_s, target: '_blank' if @job_listing.resume_link.present? %>
-</div>
-
-<section class="application">
-  <h3 class="section-header">Application Details</h3>
-  <p class="applied-at"><%= "Sent on <strong>#{@job_listing.applied_at.to_date.to_formatted_s(:long)}</strong>".html_safe if @job_listing.applied_at.present? %></p>
-  <p class="resume">Resume on file: <%= link_to 'resume', @job_listing.resume_link, target: '_blank' if @job_listing.resume_link.present? %></p>
-  <p class="cover-letter">Cover letter on file: <%= link_to 'cover_letter', @job_listing.cover_letter_link, target: '_blank' if @job_listing.cover_letter_link.present? %></p>
-</section>
-
-<hr>
-
-<div class="light-bg">
-  <div class="position-description">
-    <div class="brief-description">
-      <h3 class="section-header"><%= @job_listing.position %></h3>
-      <span class="sub-heading"><%= @job_listing.company %></span>
-      <%= link_to @job_listing.company_website, @job_listing.company_website, target: '_blank' if @job_listing.company_website.present? %>
+<div class="content">
+  <div class="content-container">
+    <div class="heading-left">
+      <span class="edit-link">(<%= link_to 'edit', edit_job_listing_path(@job_listing) %>)</span>
+      <h1><%= @job_listing.display_name %></h1><span class="listing-favorite"></span>
+      <span class="sub-heading"><%= link_to @job_listing.url, @job_listing.url, target: '_blank' %></span>
+      <%= link_to 'Resume', @job_listing.resume_link.to_s, target: '_blank' if @job_listing.resume_link.present? %>
     </div>
 
-    <div class="full-description">
-      <h3 class="section-header">Description</h3>
-      <%= sanitize @job_listing.description, tags: %w(br div p em a ul old li strong ) %>
-    </div>
+    <section class="application">
+      <h3 class="section-header">Application Details</h3>
+      <p class="applied-at"><%= "Sent on <strong>#{@job_listing.applied_at.to_date.to_formatted_s(:long)}</strong>".html_safe if @job_listing.applied_at.present? %></p>
+      <p class="resume">Resume on file: <%= link_to 'resume', @job_listing.resume_link, target: '_blank' if @job_listing.resume_link.present? %></p>
+      <p class="cover-letter">Cover letter on file: <%= link_to 'cover_letter', @job_listing.cover_letter_link, target: '_blank' if @job_listing.cover_letter_link.present? %></p>
+    </section>
 
-    <span class="btn btn-center"><%= link_to 'Apply', @job_listing.apply_link, target: '_blank' if @job_listing.apply_link.present? %></span>
+    <div class="listing-nav">
+      <ul>
+        <li id="application-details-tab" class="active">Application Details</li>
+        <li id="comments-tab">Comments</li>
+        <li id="interviews-tab">Interviews</li>
+      </ul>
+    </div>
   </div>
 </div>
+
+<section class="light-bg">
+  <div class="content">
+    <div class="content-container">
+      <div class="position-description">
+        <div class="brief-description">
+          <h3 class="section-header"><%= @job_listing.position %></h3>
+          <span class="sub-heading"><%= @job_listing.company %></span>
+          <%= link_to @job_listing.company_website, @job_listing.company_website, target: '_blank' if @job_listing.company_website.present? %>
+        </div>
+
+        <div class="full-description">
+          <h3 class="section-header">Description</h3>
+          <%= sanitize @job_listing.description, tags: %w(br div p em a ul old li strong ) %>
+        </div>
+
+        <span class="btn btn-center"><%= link_to 'Apply', @job_listing.apply_link, target: '_blank' if @job_listing.apply_link.present? %></span>
+      </div>
+
+      <div class="comment-container hidden">
+        <h3 class="section-header">Comments</h3>
+        <%= form_for Comment.new(job_listing: @job_listing) do |f| %>
+            <div class="field">
+              <%= f.text_area :value %>
+            </div>
+
+            <%= f.submit 'Submit', class: 'btn' %>
+        <% end %>
+
+        <div class="comment-list">
+          <%= render partial: 'comment' %>
+          <%= render partial: 'comment' %>
+          <%= render partial: 'comment' %>
+          <%= render partial: 'comment' %>
+          <%= render partial: 'comment' %>
+          <%= render partial: 'comment' %>
+          <%= render partial: 'comment' %>
+          <%= render partial: 'comment' %>
+          <%= render partial: 'comment' %>
+          <%= render partial: 'comment' %>
+          <%= render partial: 'comment' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
