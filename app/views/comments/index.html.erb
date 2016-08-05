@@ -1,2 +1,47 @@
-<h1>Comments#index,</h1>
-<p>Find me in app/views/comments/index,.html.erb</p>
+<div class="content">
+  <div class="content-container">
+    <div class="heading-left">
+      <span class="edit-link">(<%= link_to 'edit', edit_job_listing_path(@job_listing) %>)</span>
+      <h1><%= @job_listing.display_name %></h1><span class="listing-favorite"></span>
+      <span class="sub-heading"><%= link_to @job_listing.url, @job_listing.url, target: '_blank' %></span>
+      <%= link_to 'Resume', @job_listing.resume_link.to_s, target: '_blank' if @job_listing.resume_link.present? %>
+    </div>
+
+    <section class="application">
+      <h3 class="section-header">Application Details</h3>
+      <p class="applied-at"><%= "Sent on <strong>#{@job_listing.applied_at.to_date.to_formatted_s(:long)}</strong>".html_safe if @job_listing.applied_at.present? %></p>
+      <p class="resume">Resume on file: <%= link_to 'resume', @job_listing.resume_link, target: '_blank' if @job_listing.resume_link.present? %></p>
+      <p class="cover-letter">Cover letter on file: <%= link_to 'cover_letter', @job_listing.cover_letter_link, target: '_blank' if @job_listing.cover_letter_link.present? %></p>
+    </section>
+
+    <div class="listing-nav">
+      <ul>
+        <li id="application-details-tab"><%= link_to 'Application Details', job_listing_path(@job_listing) %></li>
+        <li id="comments-tab" class="active"><%= link_to 'Comments', job_listing_comments_path(@job_listing) %></li>
+        <li id="interviews-tab"><%= link_to 'Interviews', '#' %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<section class="light-bg">
+  <div class="content">
+    <div class="content-container">
+      <div class="comment-container">
+        <h3 class="section-header">Comments</h3>
+        <%= form_for [@job_listing, @comment] do |f| %>
+            <%= f.hidden_field :job_listing_id, value: @job_listing.id %>
+            <div class="field">
+              <%= f.text_area :value %>
+            </div>
+
+            <%= f.submit 'Submit', class: 'btn' %>
+        <% end %>
+
+        <div class="comment-list">
+          <%= render @job_listing.comments.order(created_at: :desc) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

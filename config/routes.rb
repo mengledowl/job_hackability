@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  resources :job_listings
-  resources :comments, except: [:new]
-
+  resources :job_listings do
+    resources :comments, except: [:new]
+  end
 end

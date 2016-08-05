@@ -16,9 +16,9 @@
 
     <div class="listing-nav">
       <ul>
-        <li id="application-details-tab" class="active">Application Details</li>
-        <li id="comments-tab">Comments</li>
-        <li id="interviews-tab">Interviews</li>
+        <li id="application-details-tab" class="active"><%= link_to 'Application Details', job_listing_path(@job_listing) %></li>
+        <li id="comments-tab"><%= link_to 'Comments', job_listing_comments_path(@job_listing) %></li>
+        <li id="interviews-tab"><%= link_to 'Interviews', '#' %></li>
       </ul>
     </div>
   </div>
@@ -40,31 +40,6 @@
         </div>
 
         <span class="btn btn-center"><%= link_to 'Apply', @job_listing.apply_link, target: '_blank' if @job_listing.apply_link.present? %></span>
-      </div>
-
-      <div class="comment-container hidden">
-        <h3 class="section-header">Comments</h3>
-        <%= form_for Comment.new(job_listing: @job_listing) do |f| %>
-            <div class="field">
-              <%= f.text_area :value %>
-            </div>
-
-            <%= f.submit 'Submit', class: 'btn' %>
-        <% end %>
-
-        <div class="comment-list">
-          <%= render partial: 'comment' %>
-          <%= render partial: 'comment' %>
-          <%= render partial: 'comment' %>
-          <%= render partial: 'comment' %>
-          <%= render partial: 'comment' %>
-          <%= render partial: 'comment' %>
-          <%= render partial: 'comment' %>
-          <%= render partial: 'comment' %>
-          <%= render partial: 'comment' %>
-          <%= render partial: 'comment' %>
-          <%= render partial: 'comment' %>
-        </div>
       </div>
     </div>
   </div>

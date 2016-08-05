@@ -1,0 +1,5 @@
+<div class="comment">
+  <p class="comment-value"><%= simple_format(comment.value) %></p>
+
+  <p class="comment-details">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
+</div>
