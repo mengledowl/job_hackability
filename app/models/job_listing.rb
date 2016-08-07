@@ -1,6 +1,7 @@
 class JobListing < ActiveRecord::Base
   belongs_to :user
   has_many :comments
+  has_many :interviews
 
   before_create :scrape_attributes
 
