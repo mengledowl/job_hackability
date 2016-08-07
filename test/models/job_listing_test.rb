@@ -56,6 +56,58 @@ class JobListingTest < ActiveSupport::TestCase
     assert_equal nil, @job_listing.company_website
   end
 
+  test "scrape_attributes should not set any attributes already set" do
+    @job_listing.company = 'Test Company'
+    @job_listing.description = 'Test description'
+    @job_listing.apply_details = 'Test apply_details'
+    @job_listing.apply_link = 'Test apply_link'
+    @job_listing.position = 'Test position'
+    @job_listing.posted_date = 2.days.ago.to_date
+    @job_listing.company_website = 'Test company_website'
+    @job_listing.url = @scraper_attributes['url']
+    scrape = Scraper.new(@scraper_attributes['url'])
+
+    @scraper_attributes.each { |k,v| scrape.send("#{k}=", v) }
+
+    @job_listing.stub(:scraped_values, scrape) { @job_listing.scrape_attributes }
+
+    assert_equal scrape.url, @job_listing.url
+    assert_equal scrape.html, @job_listing.raw_scraping_data
+    assert_equal 'Test Company', @job_listing.company
+    assert_equal 'Test description', @job_listing.description
+    assert_equal 'Test apply_details', @job_listing.apply_details
+    assert_equal 'Test apply_link', @job_listing.apply_link
+    assert_equal 'Test position', @job_listing.position
+    assert_equal 2.days.ago.to_date, @job_listing.posted_date
+    assert_equal 'Test company_website', @job_listing.company_website
+  end
+
+  test "scrape_attributes should set attributes already set when force: true included" do
+    @job_listing.company = 'Test Company'
+    @job_listing.description = 'Test description'
+    @job_listing.apply_details = 'Test apply_details'
+    @job_listing.apply_link = 'Test apply_link'
+    @job_listing.position = 'Test position'
+    @job_listing.posted_date = 2.days.ago.to_date
+    @job_listing.company_website = 'Test company_website'
+    @job_listing.url = @scraper_attributes['url']
+    scrape = Scraper.new(@scraper_attributes['url'])
+
+    @scraper_attributes.each { |k,v| scrape.send("#{k}=", v) }
+
+    @job_listing.stub(:scraped_values, scrape) { @job_listing.scrape_attributes(force: true) }
+
+    assert_equal scrape.url, @job_listing.url
+    assert_equal scrape.html, @job_listing.raw_scraping_data
+    assert_equal scrape.company, @job_listing.company
+    assert_equal scrape.description, @job_listing.description
+    assert_equal scrape.apply_details, @job_listing.apply_details
+    assert_equal scrape.apply_link, @job_listing.apply_link
+    assert_equal scrape.position, @job_listing.position
+    assert_equal scrape.posted_date, @job_listing.posted_date
+    assert_equal scrape.company_website, @job_listing.company_website
+  end
+
   test "display_name should return title if available" do
     @job_listing.title = 'title test'
 
