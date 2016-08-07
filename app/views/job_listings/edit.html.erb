@@ -1,76 +1,81 @@
-<div class="heading-center">
-  <h1>Edit Job Listing</h1>
+<div class="content">
+  <div class="content-container">
+    <div class="heading-center">
+      <h1>Edit Job Listing</h1>
+    </div>
+
+    <%= render 'layouts/flash_messages' %>
+
+    <%= render partial: 'layouts/errors', locals: { model: @job_listing } %>
+
+    <%= form_for @job_listing do |f| %>
+        <div class="field">
+          <%= f.label :url %>
+          <%= f.text_field :url, disabled: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+        </div>
+
+        <div class="field editor">
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+        </div>
+
+        <div class="field">
+          <%= f.label :apply_link %>
+          <%= f.text_field :apply_link %>
+        </div>
+
+        <div class="field">
+          <%= f.label :resume_link %>
+          <%= f.text_field :resume_link %>
+        </div>
+
+        <div class="field">
+          <%= f.label :applied_at %>
+          <%= f.date_select :applied_at, { :include_blank => true, :default => nil } %>
+        </div>
+
+        <div class="field">
+          <%= f.label :cover_letter_link %>
+          <%= f.text_field :cover_letter_link %>
+        </div>
+
+        <div class="field">
+          <%= f.label :favorite %>
+          <%= f.check_box :favorite %>
+        </div>
+
+        <div class="field">
+          <%= f.label :position %>
+          <%= f.text_field :position %>
+        </div>
+
+        <div class="field">
+          <%= f.label :posted_date %>
+          <%= f.date_select :posted_date, { :include_blank => true, :default => nil } %>
+        </div>
+
+        <div class="field">
+          <%= f.label :company_website %>
+          <%= f.text_field :company_website %>
+        </div>
+
+        <div class="field">
+          <%= f.label :company_name %>
+          <%= f.text_field :company %>
+        </div>
+
+        <div class="field">
+          <%= f.label :apply_details %>
+          <%= f.text_field :apply_details %>
+        </div>
+
+        <%= f.submit %>
+    <% end %>
+  </div>
 </div>
 
-<%= render 'layouts/flash_messages' %>
-
-<%= render partial: 'layouts/errors', locals: { model: @job_listing } %>
-
-<%= form_for @job_listing do |f| %>
-    <div class="field">
-      <%= f.label :url %>
-      <%= f.text_field :url, disabled: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
-
-    <div class="field">
-      <%= f.label :description %>
-      <%= f.text_field :description %>
-    </div>
-
-    <div class="field">
-      <%= f.label :apply_link %>
-      <%= f.text_field :apply_link %>
-    </div>
-
-    <div class="field">
-      <%= f.label :resume_link %>
-      <%= f.text_field :resume_link %>
-    </div>
-
-    <div class="field">
-      <%= f.label :applied_at %>
-      <%= f.date_select :applied_at, { :include_blank => true, :default => nil } %>
-    </div>
-
-    <div class="field">
-      <%= f.label :cover_letter_link %>
-      <%= f.text_field :cover_letter_link %>
-    </div>
-
-    <div class="field">
-      <%= f.label :favorite %>
-      <%= f.check_box :favorite %>
-    </div>
-
-    <div class="field">
-      <%= f.label :position %>
-      <%= f.text_field :position %>
-    </div>
-
-    <div class="field">
-      <%= f.label :posted_date %>
-      <%= f.date_select :posted_date, { :include_blank => true, :default => nil } %>
-    </div>
-
-    <div class="field">
-      <%= f.label :company_website %>
-      <%= f.text_field :company_website %>
-    </div>
-
-    <div class="field">
-      <%= f.label :company_name %>
-      <%= f.text_field :company %>
-    </div>
-
-    <div class="field">
-      <%= f.label :apply_details %>
-      <%= f.text_field :apply_details %>
-    </div>
-
-    <%= f.submit %>
-<% end %>

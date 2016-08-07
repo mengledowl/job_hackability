@@ -4,6 +4,19 @@
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+  <script>
+    $(document).on('turbolinks:load ready', function() {
+      tinymce.remove();
+      tinymce.init({
+        selector: '.editor textarea',
+        statusbar:false,
+        height: 200,
+        min_width: 300
+      });
+    })
+
+  </script>
   <%= csrf_meta_tags %>
 </head>
 <body>
