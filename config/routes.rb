@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   resources :job_listings do
     resources :comments, except: [:new]
+    resources :interviews
   end
 end

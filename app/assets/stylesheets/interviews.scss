@@ -1,0 +1,31 @@
+
+
+.interview-listing-container {
+  width: 100%;
+  border: 1px solid #DADDE0;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px;
+}
+
+.interview-listing {
+  margin: 0;
+  padding: 10px;
+  border-bottom: 1px solid #DADDE0;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.interview-listing:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.interview-listing:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.interview-listing:last-child {
+  border-bottom: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

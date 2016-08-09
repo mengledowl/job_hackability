@@ -18,7 +18,7 @@
       <ul>
         <li id="application-details-tab" class="active"><%= link_to 'Application Details', job_listing_path(@job_listing) %></li>
         <li id="comments-tab"><%= link_to 'Comments', job_listing_comments_path(@job_listing) %></li>
-        <li id="interviews-tab"><%= link_to 'Interviews', '#' %></li>
+        <li id="interviews-tab"><%= link_to 'Interviews', job_listing_interviews_path(@job_listing) %></li>
       </ul>
     </div>
   </div>
