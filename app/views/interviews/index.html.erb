@@ -24,38 +24,16 @@
   </div>
 </div>
 
-<span><%= 2.days.from_now.in_time_zone("Central Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %></span>
-
 <section class="light-bg">
   <div class="content">
     <div class="content-container">
-      <h3 class="section-header">Interviews</h3>
+      <div class="heading-center">
+        <h3 class="section-header">Interviews</h3>
+        <span class="btn"><%= link_to 'Create New', new_job_listing_interview_path(@job_listing) %></span>
+      </div>
 
       <div class="interview-listing-container">
-        <div class="interview-listing">
-          <span class="scheduled-at"><%= time_ago_in_words(2.days.from_now.in_time_zone("Central Time (US & Canada)")) + " away" %></span>
-          <span class="location">123 Main St, Fayetteville, AR 72701</span>
-        </div>
-
-        <div class="interview-listing">
-          <span class="scheduled-at"><%= time_ago_in_words(2.days.from_now.in_time_zone("Central Time (US & Canada)")) + " away" %></span>
-          <span class="location">123 Main St, Fayetteville, AR 72701</span>
-        </div>
-
-        <div class="interview-listing">
-          <span class="scheduled-at"><%= time_ago_in_words(2.days.from_now.in_time_zone("Central Time (US & Canada)")) + " away" %></span>
-          <span class="location">123 Main St, Fayetteville, AR 72701</span>
-        </div>
-
-        <div class="interview-listing">
-          <span class="scheduled-at"><%= time_ago_in_words(2.days.from_now.in_time_zone("Central Time (US & Canada)")) + " away" %></span>
-          <span class="location">123 Main St, Fayetteville, AR 72701</span>
-        </div>
-
-        <div class="interview-listing">
-          <span class="scheduled-at"><%= time_ago_in_words(2.days.from_now.in_time_zone("Central Time (US & Canada)")) + " away" %></span>
-          <span class="location">123 Main St, Fayetteville, AR 72701</span>
-        </div>
+        <%= render @job_listing.interviews.order(:scheduled_at) %>
       </div>
     </div>
 

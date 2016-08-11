@@ -1,0 +1,6 @@
+<div class="interview-listing">
+  <%= link_to job_listing_interview_path(id: interview.id) do %>
+    <span class="scheduled-at"><%= scheduled_at(interview) %></span>
+    <span class="location"><%= interview.location %></span>
+  <% end %>
+</div>

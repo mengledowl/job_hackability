@@ -9,10 +9,19 @@
 
 .interview-listing {
   margin: 0;
-  padding: 10px;
   border-bottom: 1px solid #DADDE0;
-  cursor: pointer;
   background-color: #fff;
+  height: 3em;
+  vertical-align: middle;
+  line-height: 3em;
+  text-align: center;
+}
+
+.interview-listing a {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  color: #666;
 }
 
 .interview-listing:hover {
@@ -28,4 +37,12 @@
   border-bottom: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.interview-listing span {
+  padding: 0 10px;
+}
+
+.interview-listing .scheduled-at {
+  float: left;
 }

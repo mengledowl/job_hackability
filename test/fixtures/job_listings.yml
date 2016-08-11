@@ -2,7 +2,7 @@
 
 one:
   url: sampleurl.com
-  user_id: 1
+  user: one
   title: MyText
   description: MyText
   raw_scraping_data: MyText

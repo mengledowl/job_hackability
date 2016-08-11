@@ -9,7 +9,7 @@ class JobListingTest < ActiveSupport::TestCase
 
   test "should have unique urls per user" do
     @job_listing.url = 'sampleurl.com' # duplicate
-    @job_listing.user_id = 1
+    @job_listing.user = users(:one)
 
     assert_not @job_listing.valid?
     assert_raises(ActiveRecord::RecordInvalid) { @job_listing.save! }
