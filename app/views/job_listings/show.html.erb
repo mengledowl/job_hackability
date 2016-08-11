@@ -36,7 +36,7 @@
 
         <div class="full-description">
           <h3 class="section-header">Description</h3>
-          <%= sanitize @job_listing.description, tags: %w(br div p em a ul old li strong ) %>
+          <%= sanitize @job_listing.description, tags: %w(br div p em a ul old li strong) %>
         </div>
 
         <span class="btn btn-center"><%= link_to 'Apply', @job_listing.apply_link, target: '_blank' if @job_listing.apply_link.present? %></span>

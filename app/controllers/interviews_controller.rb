@@ -59,6 +59,6 @@ class InterviewsController < ApplicationController
   end
 
   def interview_params
-    params.require(:interview).permit(:scheduled_at, :location)
+    params.require(:interview).permit(:scheduled_at, :location, :description, :how_it_went)
   end
 end
