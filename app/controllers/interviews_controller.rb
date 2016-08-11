@@ -1,12 +1,12 @@
 class InterviewsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_job_listing
+  before_action :set_interview, only: [:show, :edit, :update, :delete]
 
   def index
   end
 
   def show
-    @interview = @job_listing.interviews.where(id: params[:id]).first
   end
 
   def new
@@ -29,9 +29,16 @@ class InterviewsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
+    if @interview.update(interview_params)
+      redirect_to job_listing_interview_path(id: @interview.id)
+    else
+      flash.now[:error] = 'Could not save interview'
+      render :edit
+    end
   end
 
   def delete
@@ -45,6 +52,10 @@ class InterviewsController < ApplicationController
 
   def job_listing
     JobListing.find_by(user: current_user, id: params[:job_listing_id])
+  end
+
+  def set_interview
+    @interview = @job_listing.interviews.where(id: params[:id]).first
   end
 
   def interview_params

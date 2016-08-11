@@ -34,6 +34,8 @@
 
       <div class="interview-container">
         <%= link_to '< back', url_for(:back) %>
+        <br>
+        <span class="edit-link">(<%= link_to 'edit', edit_job_listing_interview_path(id: @interview.id) %>)</span>
         <div class="interview">
           <span class="sub-heading"><%= @interview.location %></span>
           <span><%= @interview.scheduled_at.in_time_zone("Central Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %></span>
