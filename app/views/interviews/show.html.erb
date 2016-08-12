@@ -41,7 +41,7 @@
           <span class="sub-heading"><strong>Location: </strong><%= @interview.location %></span>
           <span><strong>Day/time: </strong><%= @interview.scheduled_at.in_time_zone("Central Time (US & Canada)").strftime("%B %d, %Y %I:%M %p") %></span>
           <br>
-          <span><strong>How it went: </strong><%= @interview.how_it_went || '-' %>/5</span>
+          <span><strong>How it went: </strong><%= @interview.how_it_went || '-' %>/3</span>
 
           <div class="interview-description">
             <h3 class="section-header">Description</h3>
