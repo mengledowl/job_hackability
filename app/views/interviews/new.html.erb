@@ -41,7 +41,7 @@
           <div class="field">
             <%= f.label :scheduled_at %>
             <%= f.datetime_select :scheduled_at, ampm: true %>
-            <%= select_tag :time_zone, time_zone_options_for_select %>
+            <%= f.time_zone_select :time_zone %>
           </div>
 
           <div class="field">

@@ -41,8 +41,8 @@
         <%= form_for [@job_listing, @interview] do |f| %>
             <div class="field">
               <%= f.label :scheduled_at %>
-              <%= f.datetime_select :scheduled_at, ampm: true %>
-              <%= select_tag :time_zone, time_zone_options_for_select %>
+              <%= f.datetime_select :scheduled_at, ampm: true, selected: @interview.scheduled_at.in_time_zone(@interview.time_zone) %>
+              <%= f.time_zone_select :time_zone %>
             </div>
 
             <div class="field">

@@ -16,7 +16,7 @@ class InterviewsController < ApplicationController
   def create
     @interview = Interview.new(job_listing: @job_listing)
 
-    Time.use_zone(params[:time_zone]) do
+    Time.use_zone(interview_params[:time_zone]) do
       @interview.attributes = interview_params
     end
 
@@ -33,7 +33,11 @@ class InterviewsController < ApplicationController
   end
 
   def update
-    if @interview.update(interview_params)
+    Time.use_zone(interview_params[:time_zone]) do
+      @interview.attributes = interview_params
+    end
+
+    if @interview.save
       redirect_to job_listing_interview_path(id: @interview.id)
     else
       flash.now[:error] = 'Could not save interview'
@@ -59,6 +63,6 @@ class InterviewsController < ApplicationController
   end
 
   def interview_params
-    params.require(:interview).permit(:scheduled_at, :location, :description, :how_it_went)
+    params.require(:interview).permit(:scheduled_at, :location, :description, :how_it_went, :time_zone)
   end
 end

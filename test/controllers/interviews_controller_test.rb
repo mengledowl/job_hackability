@@ -21,7 +21,8 @@ class InterviewsControllerTest < ActionController::TestCase
           "scheduled_at(2i)": "8",
           "scheduled_at(3i)": "9",
           "scheduled_at(4i)": "02",
-          "scheduled_at(5i)": "20"
+          "scheduled_at(5i)": "20",
+          time_zone: 'Central Time (US & Canada)'
       }
     end
 
@@ -29,6 +30,6 @@ class InterviewsControllerTest < ActionController::TestCase
 
     assert_response 302
     assert_equal interviews_size + 1, Interview.count
-    assert_equal Time.parse('2016-8-9 02:20').in_time_zone('Central Time (US & Canada)'), interview.scheduled_at.in_time_zone('Central Time (US & Canada)')
+    assert_equal Time.parse('2016-8-9 02:20').in_time_zone('Central Time (US & Canada)'), interview.scheduled_at.in_time_zone(interview.time_zone)
   end
 end
