@@ -4,9 +4,9 @@
       <h1>New Job Listing</h1>
     </div>
 
-    <%= render 'layouts/flash_messages' %>
+    <%= render 'shared/flash_messages' %>
 
-    <%= render partial: 'layouts/errors', locals: { model: @job_listing } %>
+    <%= render partial: 'shared/errors', locals: { model: @job_listing } %>
 
     <%= form_for @job_listing do |f| %>
         <div class="field">

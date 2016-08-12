@@ -33,9 +33,9 @@
 
       <%= link_to '< back', url_for(:back) %>
 
-      <%= render 'layouts/flash_messages' %>
+      <%= render 'shared/flash_messages' %>
 
-      <%= render partial: 'layouts/errors', locals: { model: @job_listing } %>
+      <%= render partial: 'shared/errors', locals: { model: @job_listing } %>
 
       <%= form_for [@job_listing, @interview] do |f| %>
           <div class="field">
