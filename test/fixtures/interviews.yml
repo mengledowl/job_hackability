@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  job_listing_id: 1
+  job_listing: one
   scheduled_at: 2016-08-07 15:59:44
   location: MyString
 

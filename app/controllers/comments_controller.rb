@@ -12,13 +12,24 @@ class CommentsController < ApplicationController
   def create
     @job_listing = JobListing.find_by(user: current_user, id: params[:job_listing_id])
 
-    if @job_listing
-      Comment.create(comment_params)
+    if @job_listing && params[:interview_id].present?
+      @interview = Interview.find_by(job_listing: @job_listing, id: params[:interview_id])
 
-      redirect_to job_listing_comments_path(@job_listing)
+      if @interview && @interview.comments << Comment.new(comment_params)
+        redirect_to job_listing_interview_path(id: @interview.id)
+      else
+        flash.now[:error] = 'Could not post comment'
+        render 'interviews/show'
+      end
     else
-      flash.now[:error] = 'Could not post comment'
-      render :index
+      if @job_listing
+        @job_listing.comments << Comment.new(comment_params)
+
+        redirect_to job_listing_comments_path(@job_listing)
+      else
+        flash.now[:error] = 'Could not post comment'
+        render :index
+      end
     end
   end
 
@@ -31,6 +42,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:value, :job_listing_id)
+    params.require(:comment).permit(:value)
   end
 end

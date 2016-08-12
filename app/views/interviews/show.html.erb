@@ -47,6 +47,24 @@
             <h3 class="section-header">Description</h3>
             <%= sanitize @interview.description, tags: %w(br div p em a ul old li strong) %>
           </div>
+
+          <div class="interview-comments">
+            <h3 class="section-header">Comments</h3>
+            <%= form_for [@job_listing, @interview, Comment.new] do |f| %>
+                <%= f.hidden_field :job_listing_id, value: @job_listing.id %>
+                <%= f.hidden_field :interview_id, value: @interview.id %>
+
+                <div class="field">
+                  <%= f.text_area :value %>
+                </div>
+
+                <%= f.submit 'Submit', class: 'btn' %>
+            <% end %>
+
+            <div class="comment-list">
+              <%= render @interview.comments %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
