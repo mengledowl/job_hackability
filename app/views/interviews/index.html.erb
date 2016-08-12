@@ -32,9 +32,11 @@
         <span class="btn"><%= link_to 'Create New', new_job_listing_interview_path(@job_listing) %></span>
       </div>
 
-      <div class="interview-listing-container">
-        <%= render @job_listing.interviews.order(:scheduled_at) %>
-      </div>
+      <% if @job_listing.interviews.present? %>
+        <div class="interview-listing-container">
+          <%= render @job_listing.interviews.order(:scheduled_at) %>
+        </div>
+      <% end %>
     </div>
 
   </div>
