@@ -74,6 +74,16 @@
           <%= f.text_field :apply_details %>
         </div>
 
+        <div class="field">
+          <%= f.label :location %>
+          <%= f.text_field :location %>
+        </div>
+
+        <div class="field">
+          <%= f.label :remote %>
+          <%= f.check_box :remote %>
+        </div>
+
         <%= f.submit %>
     <% end %>
   </div>

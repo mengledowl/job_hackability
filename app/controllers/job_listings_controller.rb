@@ -42,12 +42,12 @@ class JobListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:job_listing).permit(:url, :title, :description, :apply_link, :resume_link, :applied_at,
+    params.require(:job_listing).permit(:url, :title, :description, :apply_link, :resume_link, :applied_at, :location, :remote,
                                         :cover_letter_link, :favorite, :position, :posted_date, :company_website, :company, :apply_details)
   end
 
   def edit_listing_params
-    params.require(:job_listing).permit(:title, :description, :apply_link, :resume_link, :applied_at, :status,
+    params.require(:job_listing).permit(:title, :description, :apply_link, :resume_link, :applied_at, :status, :location, :remote,
                                         :cover_letter_link, :favorite, :position, :posted_date, :company_website, :company, :apply_details)
   end
 
