@@ -134,7 +134,7 @@ class JobListingTest < ActiveSupport::TestCase
   test "status should only allow no_interview_granted, interviewing, offer_received, offer_declined, and no_offer_given" do
     @job_listing.url = 'http://www.test.com/test'
 
-    [:no_interview_granted, :interviewing, :offer_received, :offer_declined, :no_offer_given].each do |status|
+    JobListing::STATUS_VALUES.each do |status|
       @job_listing.status = status
 
       assert @job_listing.valid?
