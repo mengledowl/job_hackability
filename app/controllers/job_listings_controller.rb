@@ -47,7 +47,7 @@ class JobListingsController < ApplicationController
   end
 
   def edit_listing_params
-    params.require(:job_listing).permit(:title, :description, :apply_link, :resume_link, :applied_at,
+    params.require(:job_listing).permit(:title, :description, :apply_link, :resume_link, :applied_at, :status,
                                         :cover_letter_link, :favorite, :position, :posted_date, :company_website, :company, :apply_details)
   end
 

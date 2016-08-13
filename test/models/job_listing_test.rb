@@ -130,4 +130,45 @@ class JobListingTest < ActiveSupport::TestCase
 
     assert_equal 'http://www.test.com/test', @job_listing.display_name
   end
+
+  test "status should only allow no_interview_granted, interviewing, offer_received, offer_declined, and no_offer_given" do
+    @job_listing.url = 'http://www.test.com/test'
+
+    [:no_interview_granted, :interviewing, :offer_received, :offer_declined, :no_offer_given].each do |status|
+      @job_listing.status = status
+
+      assert @job_listing.valid?
+    end
+
+    @job_listing.status = :not_allowed
+
+    assert_not @job_listing.valid?
+  end
+
+  test "status should allow nil" do
+    @job_listing.url = 'http://www.test.com/test'
+
+    assert @job_listing.valid?
+  end
+
+  test "adding first interview should automatically set status to interviewing" do
+    @job_listing.url = 'http://www.test.com/test'
+    @job_listing.save
+
+    @job_listing.interviews << Interview.new
+
+    assert_equal 'interviewing', @job_listing.status
+  end
+
+  test "adding later interviews should not change status" do
+    @job_listing.url = 'http://www.test.com/test'
+    @job_listing.save
+
+    @job_listing.interviews << Interview.new
+
+    @job_listing.update(status: :offer_received)
+    @job_listing.interviews << Interview.new
+
+    assert_equal 'offer_received', @job_listing.status
+  end
 end

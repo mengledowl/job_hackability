@@ -1,12 +1,16 @@
 class JobListing < ActiveRecord::Base
   belongs_to :user
   has_many :comments
-  has_many :interviews
+  has_many :interviews, after_add: :set_status_to_interviewing
+
+  STATUS_VALUES = %w(no_interview_granted interviewing offer_received offer_declined no_offer_given)
 
   before_create :scrape_attributes
 
   validates_presence_of :url
   validates_uniqueness_of :url, scope: :user
+
+  validates_inclusion_of :status, in: STATUS_VALUES, message: 'not recognized', allow_blank: true
 
   def scraped_values
     @scraped_values ||= scraper_adapter.new(url).scrape
@@ -43,5 +47,11 @@ class JobListing < ActiveRecord::Base
   def position_at_company
     return "#{position} at #{company}" if position.present? && company.present?
     nil
+  end
+
+  def set_status_to_interviewing(interview)
+    if interviews.size == 1
+      self.status = :interviewing
+    end
   end
 end

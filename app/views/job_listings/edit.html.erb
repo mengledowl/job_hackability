@@ -74,6 +74,11 @@
           <%= f.text_field :apply_details %>
         </div>
 
+        <div class="field">
+          <%= f.label :status %>
+          <%= f.select :status, JobListing::STATUS_VALUES.collect { |s| [s.humanize, s] }, { include_blank: true } %>
+        </div>
+
         <%= f.submit %>
     <% end %>
   </div>
