@@ -39,6 +39,8 @@ class JobListingTest < ActiveSupport::TestCase
     assert_equal scrape.position, @job_listing.position
     assert_equal scrape.posted_date, @job_listing.posted_date
     assert_equal scrape.company_website, @job_listing.company_website
+    assert_equal scrape.remote, @job_listing.remote
+    assert_equal scrape.location, @job_listing.location
   end
 
   test "scrape_attributes should not set attributes if no adapter found" do
@@ -54,6 +56,8 @@ class JobListingTest < ActiveSupport::TestCase
     assert_equal nil, @job_listing.position
     assert_equal nil, @job_listing.posted_date
     assert_equal nil, @job_listing.company_website
+    assert_equal nil, @job_listing.remote
+    assert_equal nil, @job_listing.location
   end
 
   test "scrape_attributes should not set any attributes already set" do

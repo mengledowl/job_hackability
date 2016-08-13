@@ -8,3 +8,5 @@ we_work_remotely:
   position: Rails Developer
   posted_date: <%= Date.current %>
   company_website: somecompany.com
+  remote: true
+  location: San Francisco

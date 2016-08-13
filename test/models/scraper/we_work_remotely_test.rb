@@ -42,4 +42,12 @@ class WeWorkRemotelyTest < ActiveSupport::TestCase
     assert_equal "Send your resume with references to <a href=\"mailto:%6a%6f%62%73@%67%6f%74%73%6f%63%63%65%72.%63%6f%6d\">jobs@gotsoccer.com</a>",
                  @scraped_hash.apply_details
   end
+
+  test "should set remote to true" do
+    assert @scraped_hash.remote
+  end
+
+  test "should set location" do
+    assert_equal 'Headquarters: Neptune Beach, FL', @scraped_hash.location
+  end
 end

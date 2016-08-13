@@ -7,6 +7,8 @@ class Scraper::WeWorkRemotely < Scraper
     self.description = html.css('.listing-container').inner_html.gsub(/\s{2,}|\n/, '')
     self.apply_link = html.css('.apply a').inner_html
     self.apply_details = html.css('.apply p').inner_html
+    self.location = html.css('.location').first.inner_html
+    self.remote = true
 
     OpenStruct.new(attributes)
   end

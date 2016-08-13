@@ -27,13 +27,15 @@ class JobListing < ActiveRecord::Base
     force = opts ? opts[:force] : false
 
     self.raw_scraping_data  = scraped_values.html
-    self.company            = scraped_values.company          unless self.company && !force
-    self.description        = scraped_values.description      unless self.description && !force
-    self.apply_details      = scraped_values.apply_details    unless self.apply_details && !force
-    self.apply_link         = scraped_values.apply_link       unless self.apply_link && !force
-    self.position           = scraped_values.position         unless self.position && !force
-    self.posted_date        = scraped_values.posted_date      unless self.posted_date && !force
-    self.company_website    = scraped_values.company_website  unless self.company_website && !force
+    self.company            = scraped_values.company          unless self.company.present? && !force
+    self.description        = scraped_values.description      unless self.description.present? && !force
+    self.apply_details      = scraped_values.apply_details    unless self.apply_details.present? && !force
+    self.apply_link         = scraped_values.apply_link       unless self.apply_link.present? && !force
+    self.position           = scraped_values.position         unless self.position.present? && !force
+    self.posted_date        = scraped_values.posted_date      unless self.posted_date.present? && !force
+    self.company_website    = scraped_values.company_website  unless self.company_website.present? && !force
+    self.remote             = scraped_values.remote           unless self.remote.present? && !force
+    self.location           = scraped_values.location         unless self.location.present? && !force
 
   rescue NoAdapterFoundError => e
     nil

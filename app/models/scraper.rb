@@ -2,7 +2,7 @@ require 'httparty'
 require 'nokogiri'
 
 class Scraper
-  attr_accessor :url, :html, :company, :description, :apply_details, :apply_link, :position, :posted_date, :company_website
+  attr_accessor :url, :html, :company, :description, :apply_details, :apply_link, :position, :posted_date, :company_website, :remote, :location
 
   def initialize(url)
     @url = url
@@ -59,7 +59,9 @@ class Scraper
         apply_link: format_apply_link(apply_link),
         position: position,
         posted_date: posted_date,
-        company_website: company_website
+        company_website: company_website,
+        remote: remote,
+        location: location
     }
   end
 

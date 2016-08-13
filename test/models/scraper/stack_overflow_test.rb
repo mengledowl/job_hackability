@@ -50,4 +50,12 @@ class StackOverflowTest < ActiveSupport::TestCase
   test "should not set apply_details" do
     assert_equal nil, @scraped_hash.apply_details
   end
+
+  test "should set location" do
+    assert_equal 'San Francisco, CA', @scraped_hash.location
+  end
+
+  test "should set remote" do
+    assert @scraped_hash.remote
+  end
 end
