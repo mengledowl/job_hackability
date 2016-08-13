@@ -7,10 +7,11 @@ class JobListing < ActiveRecord::Base
 
   before_create :scrape_attributes
 
-  validates_presence_of :url
-  validates_uniqueness_of :url, scope: :user
+  validates_uniqueness_of :url, scope: :user, allow_blank: true
 
   validates_inclusion_of :status, in: STATUS_VALUES, message: 'not recognized', allow_blank: true
+
+  validate :presence_of_identifier
 
   def scraped_values
     @scraped_values ||= scraper_adapter.new(url).scrape
@@ -55,5 +56,13 @@ class JobListing < ActiveRecord::Base
     if interviews.size == 1
       self.status = :interviewing
     end
+  end
+
+  private
+
+  def presence_of_identifier
+    return true if [url, title, company].compact.size >= 1
+
+    errors.add(:base, 'Must set either the url, title, or company')
   end
 end

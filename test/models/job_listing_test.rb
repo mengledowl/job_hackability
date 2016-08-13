@@ -22,6 +22,18 @@ class JobListingTest < ActiveSupport::TestCase
     assert @job_listing.valid?
   end
 
+  test "should require either url, title, or company" do
+    job_listing_url = JobListing.new(url: 'http://www.test.com/test')
+    job_listing_title = JobListing.new(title: 'Some Title')
+    job_listing_company = JobListing.new(company: 'Some Company')
+    job_listing_invalid = JobListing.new
+
+    assert job_listing_url.valid?
+    assert job_listing_title.valid?
+    assert job_listing_company.valid?
+    assert_not job_listing_invalid.valid?
+  end
+
   test "scrape_attributes should set attributes from scraper" do
     @job_listing.url = @scraper_attributes['url']
     scrape = Scraper.new(@scraper_attributes['url'])
