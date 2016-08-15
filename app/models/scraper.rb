@@ -5,7 +5,7 @@ class Scraper
   attr_accessor :url, :html, :company, :description, :apply_details, :apply_link, :position, :posted_date, :company_website, :remote, :location
 
   def initialize(url)
-    @url = url
+    set_url(url)
   end
 
   def html
@@ -13,7 +13,7 @@ class Scraper
   end
 
   def self.adapter(url)
-    host = URI(url).hostname
+    host = URI(format_and_validate_url(url)).hostname
 
     scraper_adapter = nil
 
@@ -65,7 +65,17 @@ class Scraper
     }
   end
 
+  def self.format_and_validate_url(url)
+    url = url.starts_with?('http://', 'https://') ? url : "http://#{url}"
+    raise ArgumentError, 'Invalid URL' unless url =~ /https?:\/\/\w+\.\w+/
+    url
+  end
+
   private
+
+  def set_url(url)
+    @url = Scraper.format_and_validate_url(url)
+  end
 
   def scrape_html
     page = HTTParty.get(url)

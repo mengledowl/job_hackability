@@ -22,6 +22,12 @@ class JobListingTest < ActiveSupport::TestCase
     assert @job_listing.valid?
   end
 
+  test "should not allow invalid urls" do
+    @job_listing.url = 'test'
+
+    assert_not @job_listing.valid?
+  end
+
   test "should require either url, title, or company" do
     job_listing_url = JobListing.new(url: 'http://www.test.com/test')
     job_listing_title = JobListing.new(title: 'Some Title')

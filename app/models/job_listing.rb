@@ -7,6 +7,7 @@ class JobListing < ActiveRecord::Base
 
   before_create :scrape_attributes
 
+  validate :url_is_url
   validates_uniqueness_of :url, scope: :user, allow_blank: true
 
   validates_inclusion_of :status, in: STATUS_VALUES, message: 'not recognized', allow_blank: true
@@ -40,6 +41,8 @@ class JobListing < ActiveRecord::Base
 
   rescue NoAdapterFoundError => e
     nil
+  rescue ArgumentError => e
+    nil
   end
 
   def display_name
@@ -64,5 +67,12 @@ class JobListing < ActiveRecord::Base
     return true if [url, title, company].compact.size >= 1
 
     errors.add(:base, 'Must set either the url, title, or company')
+  end
+
+  def url_is_url
+    self.url = Scraper.format_and_validate_url(self.url) if url.present?
+
+  rescue ArgumentError => e
+    errors.add(:url, 'is invalid')
   end
 end
