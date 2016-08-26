@@ -9,8 +9,31 @@ one:
   apply_link: MyText
   resume_link: MyText
   cover_letter_link: MyText
+  favorite: true
 
 two:
+  url: MyText
+  user_id: 1
+  title: MyText
+  description: MyText
+  raw_scraping_data: MyText
+  apply_link: MyText
+  resume_link: MyText
+  cover_letter_link: MyText
+  favorite: true
+
+three:
+  url: MyText
+  user_id: 1
+  title: MyText
+  description: MyText
+  raw_scraping_data: MyText
+  apply_link: MyText
+  resume_link: MyText
+  cover_letter_link: MyText
+  favorite: false
+
+four:
   url: MyText
   user_id: 1
   title: MyText

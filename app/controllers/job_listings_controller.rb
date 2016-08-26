@@ -3,7 +3,7 @@ class JobListingsController < ApplicationController
   before_action :set_job_listing, only: [:show, :edit, :update, :delete]
 
   def index
-    @job_listings = current_user.job_listings.order(created_at: :desc)
+    @job_listings = current_user.job_listings.where(filter_params).order(created_at: :desc)
   end
 
   def new
@@ -49,6 +49,10 @@ class JobListingsController < ApplicationController
   def edit_listing_params
     params.require(:job_listing).permit(:title, :description, :apply_link, :resume_link, :applied_at, :status, :location, :remote,
                                         :cover_letter_link, :favorite, :position, :posted_date, :company_website, :company, :apply_details)
+  end
+
+  def filter_params
+    params.permit(:status, :remote, :favorite).delete_if { |k, v| v.empty? }
   end
 
   def set_job_listing

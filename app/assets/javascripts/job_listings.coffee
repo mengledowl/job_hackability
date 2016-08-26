@@ -1,3 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on 'turbolinks:load', ->
+  $('.clear-all').click (e)->
+    $('#filter-option').find(':input').each (index, element) =>
+      $(element).val(null)
+
+    e.preventDefault()
+    $('#filter-option').submit()
+
+  $('#filter-option').find(':input').each (index, element) =>
+    $(element).change (e)->
+      $(e.target).parent().submit()
