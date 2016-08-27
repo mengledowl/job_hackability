@@ -5,11 +5,11 @@
 
   <span class="btn"><%= link_to 'Create New', new_job_listing_path %></span>
 
-  <p>Filter</p>
+  <p><strong>Filter</strong></p>
 
   <form id="filter-option">
     <label>Status</label>
-    <%= select_tag :status, options_for_select(JobListing::STATUS_VALUES.collect { |s| [s.humanize, s] }, params[:status]), { include_blank: true } %>
+    <%= select_tag :status, options_for_select(JobListing::STATUS_VALUES.collect { |s| [s.humanize, s] }, params[:status]), { multiple: true, class: 'chosen-select' } %>
 
     <label>Allows Remote</label>
     <%# select_tag :remote, options_for_select([true, false], params[:remote]), { include_blank: true } %>

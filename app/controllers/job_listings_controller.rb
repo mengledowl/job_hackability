@@ -52,7 +52,7 @@ class JobListingsController < ApplicationController
   end
 
   def filter_params
-    params.permit(:status, :remote, :favorite).delete_if { |k, v| v.empty? }
+    params.permit(:remote, :favorite, status: []).delete_if { |k, v| v.empty? }
   end
 
   def set_job_listing

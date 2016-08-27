@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require chosen.min
  */
 
 /* reset */
@@ -282,4 +283,8 @@ section.light-bg {
 
 .hidden {
     display: none;
+}
+
+.chosen-select {
+    width: 20em;
 }

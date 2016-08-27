@@ -9,3 +9,5 @@ $(document).on 'turbolinks:load', ->
   $('#filter-option').find(':input').each (index, element) =>
     $(element).change (e)->
       $(e.target).parent().submit()
+
+  $('.chosen-select').chosen()
