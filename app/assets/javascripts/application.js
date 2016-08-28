@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require chosen.jquery.min
 //= require jquery_ujs
 //= require turbolinks
+//= require chosen.jquery.min
 //= require_tree .
 
