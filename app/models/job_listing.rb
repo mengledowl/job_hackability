@@ -4,6 +4,8 @@ class JobListing < ActiveRecord::Base
   has_many :interviews, after_add: :set_status_to_interviewing
 
   STATUS_VALUES = %w(no_interview_granted interviewing offer_received offer_declined no_offer_given)
+  BOOL_FILTERS = ['remote', 'favorite']
+  ALLOWED_FILTERS = [*STATUS_VALUES, *BOOL_FILTERS]
 
   before_create :scrape_attributes
 
@@ -13,6 +15,22 @@ class JobListing < ActiveRecord::Base
   validates_inclusion_of :status, in: STATUS_VALUES, message: 'not recognized', allow_blank: true
 
   validate :presence_of_identifier
+
+  def self.filter_by(*opts)
+    listings = self
+    statuses = []
+    opts = opts.map(&:to_s)
+
+    opts.each do |option|
+      if option.in? BOOL_FILTERS
+        listings = listings.where(option.to_sym => true)
+      elsif option.in? STATUS_VALUES
+        statuses << option.to_s
+      end
+    end
+
+    statuses.empty? ? listings : listings.where(status: statuses)
+  end
 
   def scraped_values
     @scraped_values ||= scraper_adapter.new(url).scrape

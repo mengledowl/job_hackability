@@ -10,6 +10,8 @@ one:
   resume_link: MyText
   cover_letter_link: MyText
   favorite: true
+  remote: true
+  status: interviewing
 
 two:
   url: MyText
@@ -21,6 +23,7 @@ two:
   resume_link: MyText
   cover_letter_link: MyText
   favorite: true
+  status: interviewing
 
 three:
   url: MyText
@@ -32,6 +35,7 @@ three:
   resume_link: MyText
   cover_letter_link: MyText
   favorite: false
+  status: no_interview_granted
 
 four:
   url: MyText
@@ -42,3 +46,4 @@ four:
   apply_link: MyText
   resume_link: MyText
   cover_letter_link: MyText
+  status: offer_received
