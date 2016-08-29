@@ -3,7 +3,7 @@ class JobListingsController < ApplicationController
   before_action :set_job_listing, only: [:show, :edit, :update, :delete]
 
   def index
-    @job_listings = JobListing.filter_by(*params[:filter]).where(user: current_user).order(created_at: :desc)
+    @job_listings = JobListing.filter_by(*params[:filter]).where(user: current_user).order(created_at: :desc).page(params[:page])
   end
 
   def new

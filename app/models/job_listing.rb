@@ -16,6 +16,8 @@ class JobListing < ActiveRecord::Base
 
   validate :presence_of_identifier
 
+  paginates_per 12
+
   def self.filter_by(*opts)
     listings = self
     statuses = []

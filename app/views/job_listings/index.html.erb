@@ -8,7 +8,6 @@
 
 <div class="content-container">
   <div class="content">
-
     <form id="filter-option">
       <%= select_tag :filter, grouped_options_for_select(filter_options, params[:filter]), { multiple: true, class: 'chosen-select' } %>
 
@@ -17,11 +16,11 @@
   </div>
 </div>
 
-
 <% if @job_listings.present? %>
   <section class="light-bg">
     <div class="listing-container">
       <%= render @job_listings %>
+      <%= paginate @job_listings %>
     </div>
 
   </section>

@@ -20,6 +20,8 @@ gem 'devise'
 
 gem 'rails_12factor'
 
+gem 'kaminari'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
