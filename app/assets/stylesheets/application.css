@@ -104,16 +104,19 @@ em {
     width:100%;
     position:fixed;
     top:0;
-    height: 90px;
+    height: 5em;
     background: #01bf86;
     z-index: 10000;
+    /*padding: 0 50px;*/
 }
 
 .header {
     padding: 0 50px;
     margin:0 auto;
     position: relative;
-    top: 30px;
+    line-height: 5em;
+    vertical-align: middle;
+    /*top: 2.5em;*/
 }
 
 .menu {
