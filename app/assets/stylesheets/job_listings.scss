@@ -51,6 +51,7 @@
 .listing-description {
   height: 190px;
   margin: 10px 20px;
+  overflow: hidden;
 }
 
 .company {
@@ -153,4 +154,27 @@ p.comment-details {
 
 #filter-option {
   text-align: center;
+}
+
+@media (max-width: 790px) {
+  .listing-container {
+    padding: 0;
+  }
+
+  .listing {
+    height: 250px;
+    width: 250px;
+  }
+
+  .listing-title {
+    width: 150px;
+  }
+
+  .listing a {
+    width: 175px;
+  }
+
+  .listing-description {
+    height: 9em;
+  }
 }

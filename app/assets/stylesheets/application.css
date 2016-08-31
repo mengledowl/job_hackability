@@ -127,6 +127,8 @@ em {
     content: '\2630';
     display: none;
     color: #fff;
+    float: right;
+    font-size: 1.5em;
 }
 
 .menu li {
@@ -182,56 +184,6 @@ span.sign-up a {
 span.sign-up a:hover {
     color: #01bf86;
     background-color: #fff;
-}
-
-@media only screen and (max-width : 640px) {
-    .header {
-        padding: 0 30px;
-    }
-
-    .menu-btn:before {
-        display: block;
-        float: right;
-        font-size: 1.5em;
-    }
-
-    .menu {
-        display: none;
-        background-color: #01bf86;
-        width: 100%;
-        position: absolute;
-        left: 0;
-        margin-top: 33px;
-        /*opacity: 0;*/
-        height: auto;
-    }
-
-    .menu.open {
-        /*opacity: 1;*/
-        display: block;
-    }
-
-    .menu li {
-        /*opacity: 1;*/
-        height: auto;
-        display: block;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        top: 0;
-    }
-
-    .menu li a {
-        display: block;
-        width: 100%;
-        height: 100%;
-        padding: 10px;
-        padding-left: 30px;
-    }
-
-    .menu li a:active, .menu li a:hover {
-        background-color: rgba(255, 255, 255, 0.5);
-    }
 }
 
 .logo {
@@ -343,4 +295,54 @@ section.light-bg {
 
 .chosen-select {
     width: 20em;
+}
+
+@media only screen and (max-width : 790px) {
+    .header {
+        padding: 0 30px;
+    }
+
+    .menu-btn:before {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        background-color: #01bf86;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        margin-top: 33px;
+        height: auto;
+    }
+
+    .menu.open {
+        display: block;
+    }
+
+    .menu li {
+        height: auto;
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        top: 0;
+    }
+
+    .menu li a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        padding-left: 30px;
+    }
+
+    .menu li a:active, .menu li a:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .content-container {
+        margin: 0;
+        margin-bottom: 10px;
+    }
 }
