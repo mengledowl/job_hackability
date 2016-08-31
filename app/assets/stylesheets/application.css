@@ -104,19 +104,16 @@ em {
     width:100%;
     position:fixed;
     top:0;
-    height: 5em;
+    height: 90px;
     background: #01bf86;
     z-index: 10000;
-    /*padding: 0 50px;*/
 }
 
 .header {
     padding: 0 50px;
     margin:0 auto;
     position: relative;
-    line-height: 5em;
-    vertical-align: middle;
-    /*top: 2.5em;*/
+    top: 30px;
 }
 
 .menu {
@@ -124,6 +121,12 @@ em {
     float: right;
     margin: 0;
     height: 20px;
+}
+
+.menu-btn:before {
+    content: '\2630';
+    display: none;
+    color: #fff;
 }
 
 .menu li {
@@ -135,6 +138,14 @@ em {
     padding: 10px;
     position: relative;
     top: -10px;
+}
+
+.menu a {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.menu a:hover {
+    color: #fff;
 }
 
 .sign-up, li.sign-up {
@@ -173,6 +184,56 @@ span.sign-up a:hover {
     background-color: #fff;
 }
 
+@media only screen and (max-width : 640px) {
+    .header {
+        padding: 0 30px;
+    }
+
+    .menu-btn:before {
+        display: block;
+        float: right;
+        font-size: 1.5em;
+    }
+
+    .menu {
+        display: none;
+        background-color: #01bf86;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        margin-top: 33px;
+        /*opacity: 0;*/
+        height: auto;
+    }
+
+    .menu.open {
+        /*opacity: 1;*/
+        display: block;
+    }
+
+    .menu li {
+        /*opacity: 1;*/
+        height: auto;
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        top: 0;
+    }
+
+    .menu li a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        padding-left: 30px;
+    }
+
+    .menu li a:active, .menu li a:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+}
+
 .logo {
     border: 2px solid white;
     border-radius: 30px;
@@ -182,14 +243,6 @@ span.sign-up a:hover {
     font-size: 14pt;
     font-weight: bold;
     align-content: left;
-}
-
-.menu a {
-    color: rgba(255, 255, 255, 0.75);
-}
-
-.menu a:hover {
-    color: #fff;
 }
 
 .header-spacer {
