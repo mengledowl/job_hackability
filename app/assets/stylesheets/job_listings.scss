@@ -71,7 +71,7 @@
 
 .application {
   margin-bottom: 20px;
-  width: 400px;
+  max-width: 400px;
 }
 
 h3.section-header {
@@ -176,5 +176,15 @@ p.comment-details {
 
   .listing-description {
     height: 9em;
+  }
+
+  .field textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .comment {
+    width: 100%;
+    box-sizing: border-box;
   }
 }
